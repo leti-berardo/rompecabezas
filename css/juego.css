@@ -19,12 +19,12 @@ li {
 
 li::before {
   content: "• ";
-  color: #EC6778;
+  color: #f98dbe;
 }
 
 .col-40 h1 {
   font-size: 20px;
-  color: #E84A5F;
+  color: #f98dbe;
 }
 
 .col-40,
@@ -35,26 +35,30 @@ li::before {
 }
 
 .col-40 {
-  background: #FFF;
+  background: #e42f68;
   padding: 30px;
   color: #000;
 }
 
-.col-60 {
-  background: #E84A5F;
+#objetivo img {
+  width: 12em;
+  border: solid 2px #f98dbe;
+}
 
+.col-60 {
+  background: #76c158;
 }
 
 #juego {
-  background-color: #2ad19a;
+  background-color: #76c158;
   width: 600px;
   height: 600px;
 }
 
-#juego .piezasMoviles img{
-  border: solid 3.3% #00000000;
-  height: 30%;
-  width: 30%;
+#juego .piezasMoviles img {
+  border: solid 1px #00000000;
+  height: 33%;
+  width: 33%;
   float: left;
 }
 
@@ -69,6 +73,10 @@ li::before {
 #juego div {
   text-align: center;
   animation: fadein 2s;
+}
+
+.titulo {
+  color: white;
 }
 
 @keyframes fadein {
