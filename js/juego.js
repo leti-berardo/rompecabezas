@@ -49,14 +49,14 @@ function chequearSiGano(grilla) {
           return true;
         }
       }
-      else if (!(siguiente)){
-        if ((actual == grilla[0][2]) &&  (actual == 3)){
+      else if (!(siguiente)) {
+        if ((actual == grilla[0][2]) && (actual == 3)) {
           return true;
         }
-        else if ((actual == grilla[1][2]) &&  (actual == 6)){
+        else if ((actual == grilla[1][2]) && (actual == 6)) {
           return true;
         }
-        else if ((actual == grilla[2][2]) &&  (actual == 6)){
+        else if ((actual == grilla[2][2]) && (actual == 9)) {
           return true;
         }
       }
