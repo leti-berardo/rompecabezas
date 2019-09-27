@@ -72,30 +72,32 @@ En vez de intercambiar esos valores vamos a terminar teniendo en ambas posicione
 Se te ocurre cómo solucionar esto con una variable temporal?
 */
 function intercambiarPosicionesGrilla(filaPos1, columnaPos1, filaPos2, columnaPos2) {
-  let actual = grilla[filaPos1][columnaPos1];
+  var tmp = grilla[filaPos1][columnaPos1];
   grilla[filaPos1][columnaPos1] = grilla[filaPos2][columnaPos2];
-  grilla[filaPos2][columnaPos2] = actual;
+  grilla[filaPos2][columnaPos2] = tmp;
 }
 
 
 // Actualiza la posición de la pieza vacía
 function actualizarPosicionVacia(nuevaFila, nuevaColumna) {
-  grilla[filaVacia][columnaVacia] = grilla[nuevaFila][nuevaColumna];
+  filaVacia = nuevaFila;
+  columnaVacia = nuevaColumna;
 
 }
 
 
 // Para chequear si la posicón está dentro de la grilla.
 function posicionValida(fila, columna) {
-  if ((fila > 2) || (fila < 0)) {
-    return false;
+  if (fila < grilla.length){
+    if (columna < grilla.length) {
+      if (fila >= 0){
+        if (columna >= 0) {
+          return true;     
+        }
+      }
+    }
   }
-  else if ((columna > 2) || (columna < 0)) {
-    return false;
-  }
-  else {
-    return true;
-  }
+  return false;
 }
 
 /* Movimiento de fichas, en este caso la que se mueve es la blanca intercambiando su posición con otro elemento.
@@ -118,13 +120,13 @@ function moverEnDireccion(direccion) {
 
   // Mueve pieza hacia la derecha, reemplazandola con la blanca
   else if (direccion === codigosDireccion.DERECHA) {
-    nuevaColumnaPiezaVacia = columnaVacia + 1;
+    nuevaColumnaPiezaVacia = columnaVacia - 1;
     nuevaFilaPiezaVacia = filaVacia;
   }
 
   // Mueve pieza hacia la izquierda, reemplazandola con la blanca
   else if (direccion === codigosDireccion.IZQUIERDA) {
-    nuevaColumnaPiezaVacia = columnaVacia - 1;
+    nuevaColumnaPiezaVacia = columnaVacia + 1;
     nuevaFilaPiezaVacia = filaVacia;
   }
 
@@ -135,7 +137,7 @@ function moverEnDireccion(direccion) {
   if (posicionValida(nuevaFilaPiezaVacia, nuevaColumnaPiezaVacia)) {
     intercambiarPosiciones(filaVacia, columnaVacia, nuevaFilaPiezaVacia, nuevaColumnaPiezaVacia);
     actualizarPosicionVacia(nuevaFilaPiezaVacia, nuevaColumnaPiezaVacia);
-
+    movimientos.push(direccion);
     //COMPLETAR: Agregar la dirección del movimiento al arreglo de movimientos
 
   }
