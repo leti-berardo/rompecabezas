@@ -37,39 +37,28 @@ function agregarMovimientoALista(direccion) {
 
 /* Esta función va a chequear si el Rompecabezas esta en la posicion ganadora. 
 Existen diferentes formas de hacer este chequeo a partir de la grilla. */
-function chequearSiGano(grilla) {
-  let actual;
-  let siguiente;
+function chequearSiGano() {
+  let grillaCompleta = [];
+  let gano = true;
   for (let i = 0; i < grilla.length; i++) {
     for (let j = 0; j < grilla[i].length; j++) {
-      actual = grilla[i][j];
-      siguiente = grilla[i][j++];
-      if (siguiente) {
-        if (actual == (siguiente - 1)) {
-          return true;
-        }
-      }
-      else if (!(siguiente)) {
-        if ((actual == grilla[0][2]) && (actual == 3)) {
-          return true;
-        }
-        else if ((actual == grilla[1][2]) && (actual == 6)) {
-          return true;
-        }
-        else if ((actual == grilla[2][2]) && (actual == 9)) {
-          return true;
-        }
-      }
-      else {
-        return false;
-      }
+      let actual = grilla[i][j];
+      grillaCompleta.push(actual);
     }
   }
+  for (let i = 0; i < grillaCompleta.length; i++) {
+    let actual = grillaCompleta[i];
+    if (actual != i + 1) {
+      gano = false;
+    }
+  }
+  return gano;
 }
+
 
 // Implementar alguna forma de mostrar un cartel que avise que ganaste el juego
 function mostrarCartelGanador() {
-  //COMPLETAR
+  alert('Has completado el juego! Felicitaciones.');
 }
 
 /* Función que intercambia dos posiciones en la grilla.
@@ -83,18 +72,30 @@ En vez de intercambiar esos valores vamos a terminar teniendo en ambas posicione
 Se te ocurre cómo solucionar esto con una variable temporal?
 */
 function intercambiarPosicionesGrilla(filaPos1, columnaPos1, filaPos2, columnaPos2) {
-  //COMPLETAR
+  let actual = grilla[filaPos1][columnaPos1];
+  grilla[filaPos1][columnaPos1] = grilla[filaPos2][columnaPos2];
+  grilla[filaPos2][columnaPos2] = actual;
 }
+
 
 // Actualiza la posición de la pieza vacía
 function actualizarPosicionVacia(nuevaFila, nuevaColumna) {
-  //COMPLETAR
+  grilla[filaVacia][columnaVacia] = grilla[nuevaFila][nuevaColumna];
+
 }
 
 
 // Para chequear si la posicón está dentro de la grilla.
 function posicionValida(fila, columna) {
-  //COMPLETAR
+  if ((fila > 2) || (fila < 0)) {
+    return false;
+  }
+  else if ((columna > 2) || (columna < 0)) {
+    return false;
+  }
+  else {
+    return true;
+  }
 }
 
 /* Movimiento de fichas, en este caso la que se mueve es la blanca intercambiando su posición con otro elemento.
@@ -117,12 +118,14 @@ function moverEnDireccion(direccion) {
 
   // Mueve pieza hacia la derecha, reemplazandola con la blanca
   else if (direccion === codigosDireccion.DERECHA) {
-    //COMPLETAR
+    nuevaColumnaPiezaVacia = columnaVacia + 1;
+    nuevaFilaPiezaVacia = filaVacia;
   }
 
   // Mueve pieza hacia la izquierda, reemplazandola con la blanca
   else if (direccion === codigosDireccion.IZQUIERDA) {
-    // COMPLETAR
+    nuevaColumnaPiezaVacia = columnaVacia - 1;
+    nuevaFilaPiezaVacia = filaVacia;
   }
 
   /* A continuación se chequea si la nueva posición es válida, si lo es, se intercambia. 
