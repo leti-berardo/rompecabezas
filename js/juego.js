@@ -48,7 +48,7 @@ function chequearSiGano() {
   }
   for (let i = 0; i < grillaCompleta.length; i++) {
     let actual = grillaCompleta[i];
-    if (actual != i + 1) {
+    if (actual != (i + 1)) {
       gano = false;
     }
   }
@@ -82,7 +82,6 @@ function intercambiarPosicionesGrilla(filaPos1, columnaPos1, filaPos2, columnaPo
 function actualizarPosicionVacia(nuevaFila, nuevaColumna) {
   filaVacia = nuevaFila;
   columnaVacia = nuevaColumna;
-
 }
 
 
