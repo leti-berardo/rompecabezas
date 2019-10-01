@@ -1,7 +1,7 @@
 /*jshint esversion: 6 */
 
 // Arreglo que contiene las intrucciones del juego 
-var instrucciones = ['Debes mover las piezas al casillero vacio.', 'Tu meta es formar la imagen que ves a tu izquierda'];
+var instrucciones = ['Con las flechas mueve el casillero vacio', 'Recorre el tablero acomodando las imagenes', 'Tu meta es formar la imagen que ves a tu izquierda'];
 // Arreglo para ir guardando los movimientos que se vayan realizando
 var movimientos = [];
 
